@@ -1,0 +1,7 @@
+/*
+ * Cody, Kyle, Troy
+ */
+public enum Gender
+{
+    Boy, Girl;
+}

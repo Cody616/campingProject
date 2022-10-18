@@ -1,0 +1,25 @@
+/*
+ * Cody, Kyle, Troy
+ */
+public class UserList
+{
+    private ArrayList<User> users =  new ArrayList<User>();
+    private UserList userList;
+}
+public UserList getInstance()
+public addUser(String firstName, lastName)//add etc)
+{
+
+}
+public User getUser(String userName)
+{
+
+}
+public editUsers()
+{
+
+}
+public saveUsers()
+{
+
+}
