@@ -1,6 +1,8 @@
+import java.util.ArrayList;
+
 public class DataWriter {
  
-    public void saveAllUsers(){
+    public ArrayList<User> saveAllUsers(){
         
     }
 }
