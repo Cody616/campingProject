@@ -1,0 +1,3 @@
+public enum Activities {
+    SWIMMING, WALKING, LUNCH, BREAKFAST, DINNER, SPORTS, ART;
+}
