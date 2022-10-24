@@ -1,8 +1,12 @@
+import java.util.ArrayList;
+
 public class DataReader {
     
 
-    public void getAllUsers(){
+    public boolean getAllUsers(ArrayList<User> users){
+            
 
+        return true;
         
     }
 }
