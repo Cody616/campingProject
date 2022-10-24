@@ -5,7 +5,7 @@ public class campDirector
     String allergies;
     boolean gender;
     String emergencyContacts;
-    ArrayList<String> totalCampCabins = new ArrayList<String>();;
+    ArrayList<String> totalCampCabins; //= new ArrayList<String>();
     int totalCounselorAmount;
     int totalCamperAmount;
 }
