@@ -3,14 +3,17 @@ public class CampFacade {
      private Users users;
     
      private User currentUser;
+
+     private Items items;
+     //^^should be cabins
+
      //currentUser variable keeps track of who is currently logged in
      
      public CampFacade() {
          //gets the singleton class, "sets them up"
          //assigns thier values to respective objects
  
-         //items = Items.getInstance();
-         
+         items = Items.getInstance();
          users = Users.getInstance();
          System.out.println("CAMP FACADE OBJECT IS CREATED.");
          System.out.println();
@@ -22,6 +25,15 @@ public class CampFacade {
      {
          //adds user to user array list 
          return users.addUser(userName,  firstName,  lastName,  age,  phoneNumber);
+     }
+
+     /*
+      * !!!!!!
+      */
+     public boolean createItem(String title, String author)
+     {
+         //adds user to user array list 
+         return items.addItem(title, author);
      }
      
      //if true, currentUser variable gets assigneed
@@ -57,10 +69,18 @@ public class CampFacade {
          return currentUser;
      }
      
-     //Returns true if item is found, and false otherwise
+   //item methods aka cabin
+   /*
+    * !!!!!!
+    */
+   public boolean findItem(String itemName) {
+        //writing the items can be done in the data writer
+        //loading the items can be done in data loader
+        return items.haveItem(itemName);
+    }
  
  
- 
+
  
  ////////////////this section will be the special director methods that will maniupulate the cabins class/////
      //passes item singleton
@@ -101,6 +121,7 @@ public class CampFacade {
          //manipulates data thru arraylist format,
          //saves everything when all said and done
          //SAVES ONE TIME
+         items.saveItems();
          users.saveUsers();
      }
  }

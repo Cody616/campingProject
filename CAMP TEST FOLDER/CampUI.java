@@ -2,8 +2,8 @@ import java.util.Scanner;
 
 public class CampUI {
     private static final String WELCOME_MESSAGE = "Welcome to our Camp Management App.";
-	private String[] mainMenuOptions = {"Create Account", "Login", "Find Item"
-    ,"Checkout Item","Rate an Item","Pay a Fine","Logout"};
+	private String[] mainMenuOptions = {"Create Account", "Login","Create Item","Find Item"
+	,"Checkout Item","Rate an Item","Pay a Fine","Logout"};
 
     /*
      * ^^should have view cabin schedule method, 
@@ -48,7 +48,6 @@ public class CampUI {
     //^^would basically be being able to use the cabin object
 
       //director makes the above logic not work
-
       */
 
 	private Scanner scanner;
@@ -86,26 +85,43 @@ public class CampUI {
 					break;
 				case(1):
 				//calls the login function
+				// System.out.println("LOGIN");
 					login();
 					break;
 				case(2):
-					// findItem();
+				// System.out.println("create item");
+					createItem();
 					break;
 				case(3):
-					// checkoutItem();
+				// System.out.println("find item");
+					findItem();
 					break;
 				case(4):
-					// rateItem();
+				 System.out.println("checkout item");
+					// checkoutItem();
 					break;
 				case(5):
+				 System.out.println("rate item");
+					// rateItem();
+					break;
+				case(6):
+				 System.out.println("pay fine");
 					// payFine();
 					break;
+
+				// case(7):
+				// System.out.println("logout");
+				// library.logout();
+				// break;
+				//the way she has it is where it doesnt need this as this same thing is found on the outside of it which is wierd.
+				
 			}
 		}
 		System.out.println("Good bye, and have a nice day");
 	}
 	
-    //PRIVATE METHODS THAT HELPS THE UI
+//methods that print messages to the user along with referneces the library objecti
+
 	private void displayMainMenu() {
 		System.out.println("\n************ Main Menu *************");
 		for(int i=0; i< mainMenuOptions.length; i++) {
@@ -132,7 +148,6 @@ public class CampUI {
 		String lastName = getField("Last Name");
 		int age = Integer.parseInt(getField("Age"));
 		String phoneNumber = getField("Phone Number");
-
 		
 		//tells you whether or not it actually worked
 		//if returns true, ...
@@ -142,8 +157,21 @@ public class CampUI {
 			System.out.println("Sorry an account with that username already exists");
 		}
 	}
-	
-    //this method should call what type of user you are. camper, director?? counselor??
+
+	//this would be like a createCabin method.
+	private void createItem() {
+		String title = getField("Title");
+		String author = getField("Author");
+
+		//tells you whether or not it actually worked
+		//if returns true, ...
+		if(campFacade.createItem(title, author)) {
+			System.out.println("You have successfully created an item.");
+		} else {
+			System.out.println("Sorry an item with that title already exists");
+		}
+	}
+
 	private void login() {
 		//asks for user name.
 		String userName = getField("Username");
@@ -165,14 +193,95 @@ public class CampUI {
 		System.out.print(prompt + ": ");
 		return scanner.nextLine();
 	}
+
+//ITEM METHODS//////
+
+//the main method that is used in all other methods below
+//basically gets current instance 
+	private String getUserItem() {
+		System.out.print("Enter Item Name: ");
+		
+		while(true) {
+
+			String itemTitle = scanner.nextLine().trim().toLowerCase();
+			System.out.println("ITEM ENTERD: " + itemTitle);
+
+			
+			if(!itemTitle.contentEquals(""))
+			{
+				return itemTitle;
+			} 
+			
+			System.out.println("You need to actually enter content");
+			System.out.print("Would you like to enter item again (y) or return to main menu (n): ");
+
+			String command = scanner.nextLine().trim().toLowerCase();
+
+			if(command == "n")
+			{
+				return null;
+			} 
+		}
+	}
+
+	private void findItem() {
+		System.out.println("\n-----Searching the Library-----");
+
+		String item = getUserItem();//calls method above
+		
+		if(item == null)return;
+		
+		if(!campFacade.findItem(item)) {
+			System.out.println("Sorry we couldn't find your item\n");
+			return;
+		}
+		
+		System.out.println("YAY your item is in the library\n");		
+	}
+	
+
+
 	
     public static void main(String[] args) {
 		CampUI libraryInterface = new CampUI();
 		libraryInterface.run();
 	}
 
+
+
+
+
+
+
+
+
+
+
+
+
 ///////need cabin methods!!//////////////////
 //cabin.getSchedule???
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

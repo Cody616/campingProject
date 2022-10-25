@@ -32,22 +32,13 @@ public class Cabin{
 
     }
 
-    public int getCabinNumber() {
-		return cabinNumber;
-	}
-
-    public ArrayList<String> getFakeCampers()
-    {
-        return fakecampers;
-    }
-
-    /*
-     * NEED SETTERS!!
-     */
-
-    // public Item(String title, String author) {
-	// 	this.title = title;
-	// 	this.author = author;
+    // public int getCabinNumber() {
+	// 	return cabinNumber;
 	// }
+
+    // public ArrayList<String> getFakeCampers()
+    // {
+    //     return fakecampers;
+    // }
 	
 }
