@@ -7,19 +7,22 @@ public class UserList
     private UserList userList;
 }
 public UserList getInstance()
+{
+    return "";
+}
 public addUser(String firstName, lastName)//add etc)
 {
-
+    return "";
 }
 public User getUser(String userName)
 {
-
+    return "";
 }
 public editUsers()
 {
-
+    return "";
 }
 public saveUsers()
 {
-
+    return "";
 }
