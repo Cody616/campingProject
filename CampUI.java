@@ -1,6 +1,27 @@
 import java.util.Scanner;
-public class UI()
+public class CampUI()
     {
+        private static final String WELCOME_MESSAGE = "Welcome to our camp!";
+        private String[] mainMenuOPtions = {"Create Account", "Login", }
+        private Scanner scan //= new Scanner (System.in);
+        
+        CampUI()
+        {
+            scan = new Scanner(System.in);
+            camp = new Camp();
+        }
+
+        public void run()
+        {
+            System.out.println("WELCOME_MESSAGE");
+            while(true)
+            {
+                displayMainMenu();
+
+                int userCommand = getUserCommand(mainMenuOPtions.length);
+            }
+        }
+
         public class printUserInitial() 
         {
             Scanner scan = new Scanner(System.in);
