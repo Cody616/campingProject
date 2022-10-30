@@ -1,3 +1,3 @@
-public enum Gender{
-    BOY, GIRL;
+public enum Gender {
+        MALE, FEMALE;
 }

@@ -1,13 +1,43 @@
-import java.util.ArrayList;
-import java.util.Random;
+import java.util.UUID;
 
 public class Cabin {
-    public ArrayList<String> schedule = new ArrayList<String>();
-    public Random rand = new Random(); 
-    public ArrayList<String> counselors = new ArrayList<String>();
-    public ArrayList<Campers> camper = new ArrayList<Campers>();
 
-    
+	private UUID id;
+	private String title;
+	private String author;
+	
+	//new Item
+	public Cabin(String title, String author) {
+		this.id = UUID.randomUUID();
+		this.title = title;
+		this.author = author;
+	}
 
-    
+	//loads preexisting item from json
+	public Cabin(UUID id, String title, String author) {
+		this.id = id;
+		this.title = title;
+		this.author = author;
+	}
+
+	public UUID getId() {
+		return id;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+	
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
 }
