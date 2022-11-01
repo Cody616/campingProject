@@ -2,8 +2,9 @@ import java.util.Scanner;
 
 public class CampUI {
     private static final String WELCOME_MESSAGE = "Welcome to our Camp Management App.";
-	private String[] mainMenuOptions = {"Create Account", "Login","Create Cabin","Find Cabin"
-	,"Checkout Cabin","Logout"};
+	private String[] startMainMenu = {"Register Child", "Login"};
+	private String[] mainMenuOptions = {"Create Account", "Login","Create Item","Find Item"
+	,"Checkout Item","Rate an Item","Pay a Fine","Logout"};
 
     /*
      * ^^should have view cabin schedule method, 
@@ -65,7 +66,8 @@ public class CampUI {
 		while(true) {
 			displayMainMenu();
 			
-			int userCommand = getUserCommand(mainMenuOptions.length);
+			//int userCommand = getUserCommand(mainMenuOptions.length);
+			int userCommand = getUserCommand(startMainMenu.length);
 			
 			if(userCommand == -1) {
 				System.out.println("Not a valid command");
@@ -73,6 +75,13 @@ public class CampUI {
 			}
 			
 			//if they picked the last option then log them out
+
+			if(userCommand == startMainMenu.length-1)
+			{
+				campFacade.logout();
+				break;
+			}
+
 			if(userCommand == mainMenuOptions.length -1) {
 				campFacade.logout();
 				break;
@@ -90,15 +99,15 @@ public class CampUI {
 					break;
 				case(2):
 				// System.out.println("create item");
-					createCabin();
+					createItem();
 					break;
 				case(3):
 				// System.out.println("find item");
-					findCabin();
+					findItem();
 					break;
 				case(4):
 				 System.out.println("checkout item");
-					 checkoutCabin();
+					// checkoutItem();
 					break;
 				case(5):
 				 System.out.println("rate item");
@@ -124,8 +133,8 @@ public class CampUI {
 
 	private void displayMainMenu() {
 		System.out.println("\n************ Main Menu *************");
-		for(int i=0; i< mainMenuOptions.length; i++) {
-			System.out.println((i+1) + ". " + mainMenuOptions[i]);
+		for(int i=0; i< startMainMenu.length; i++) {
+			System.out.println((i+1) + ". " + startMainMenu[i]);
 		}
 		System.out.println("\n");
 	}
@@ -144,6 +153,7 @@ public class CampUI {
 	
 	private void createAccount() {
 		String userName = getField("Username");
+		String password = getField("Password");
 		String firstName = getField("First Name");
 		String lastName = getField("Last Name");
 		int age = Integer.parseInt(getField("Age"));
@@ -151,7 +161,7 @@ public class CampUI {
 		
 		//tells you whether or not it actually worked
 		//if returns true, ...
-		if(campFacade.createAccount(userName, firstName, lastName, age, phoneNumber)) {
+		if(campFacade.createAccount(userName, password, firstName, lastName, age, phoneNumber)) {
 			System.out.println("You have successfully created an account");
 		} else {
 			System.out.println("Sorry an account with that username already exists");
@@ -159,14 +169,14 @@ public class CampUI {
 	}
 
 	//this would be like a createCabin method.
-	private void createCabin() {
+	private void createItem() {
 		String title = getField("Title");
 		String author = getField("Author");
 
 		//tells you whether or not it actually worked
 		//if returns true, ...
-		if(campFacade.createCabin(title, author)) {
-			System.out.println("You have successfully created a Cabin.");
+		if(campFacade.createItem(title, author)) {
+			System.out.println("You have successfully created an item.");
 		} else {
 			System.out.println("Sorry an item with that title already exists");
 		}
@@ -198,18 +208,18 @@ public class CampUI {
 
 //the main method that is used in all other methods below
 //basically gets current instance 
-	private String getUserCabin() {
-		System.out.print("Enter Cabin Name: ");
+	private String getUserItem() {
+		System.out.print("Enter Item Name: ");
 		
 		while(true) {
 
-			String cabinTitle = scanner.nextLine().trim().toLowerCase();
-			System.out.println("CABIN NAME ENTERD: " + cabinTitle);
+			String itemTitle = scanner.nextLine().trim().toLowerCase();
+			System.out.println("ITEM ENTERD: " + itemTitle);
 
 			
-			if(!cabinTitle.contentEquals(""))
+			if(!itemTitle.contentEquals(""))
 			{
-				return cabinTitle;
+				return itemTitle;
 			} 
 			
 			System.out.println("You need to actually enter content");
@@ -224,14 +234,14 @@ public class CampUI {
 		}
 	}
 
-	private void findCabin() {
+	private void findItem() {
 		System.out.println("\n-----Searching the Library-----");
 
-		String cabin = getUserCabin();//calls method above
+		String item = getUserItem();//calls method above
 		
-		if(cabin == null)return;
+		if(item == null)return;
 		
-		if(!campFacade.findCabin(cabin)) {
+		if(!campFacade.findItem(item)) {
 			System.out.println("Sorry we couldn't find your item\n");
 			return;
 		}
@@ -239,6 +249,7 @@ public class CampUI {
 		System.out.println("YAY your item is in the library\n");		
 	}
 	
+
 
 	
     public static void main(String[] args) {
@@ -256,22 +267,11 @@ public class CampUI {
 
 
 
+
+
 ///////need cabin methods!!//////////////////
 //cabin.getSchedule???
 
-private void checkoutCabin() {
-	System.out.println("\n-----Checking out an item-----");
-	// String cabin = getUserItem();
-	String cabin = getUserCabin();
-	
-	if(cabin == null)return;
-	
-	if(!campFacade.checkout(cabin)) {
-		System.out.println("Sorry we couldn't checkout your item\n");
-		return;
-	}
-	System.out.println("Your item was successfully checked out\n");
-}
 
 
 
@@ -309,6 +309,19 @@ private void checkoutCabin() {
 	// 	}
 		
 	// 	System.out.println("YAY your item is in the library\n");		
+	// }
+	
+	// private void checkoutItem() {
+	// 	System.out.println("\n-----Checking out an item-----");
+	// 	String item = getUserItem();
+		
+	// 	if(item == null)return;
+		
+	// 	if(!campFacade.checkout(item)) {
+	// 		System.out.println("Sorry we couldn't checkout your item\n");
+	// 		return;
+	// 	}
+	// 	System.out.println("Your item was successfully checked out\n");
 	// }
 	
 	// private void rateItem() {

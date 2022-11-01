@@ -15,14 +15,13 @@ public class DataBase {
 	}
 	
 
-	public static ArrayList<Cabin> getCabins(){
+	public static ArrayList<Item> getItems(){
 		// return new ArrayList<Item>();
-		ArrayList<Cabin> cabinsList = new ArrayList<Cabin>();
-		cabinsList = DataLoader.getCabins();
+		ArrayList<Item> itemsList = new ArrayList<Item>();
+		itemsList = DataLoader.getItems();
 		
-		return cabinsList;
+		return itemsList;
 	}
-	
 
 
     // public static ArrayList<Cabin> getCabins()

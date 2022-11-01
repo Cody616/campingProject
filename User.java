@@ -3,6 +3,7 @@ import java.util.UUID;
 public class User {
 	private UUID id;
 	private String userName;
+    private String password;
 	private String firstName;
 	private String lastName;
 	private int age;
@@ -26,11 +27,10 @@ public class User {
     // , ArrayList<Cabin> totalCabins <<-missing
 	
 	//new account
-	public User(String userName, String firstName, String lastName, 
-                int age, String phoneNumber) {
-
+	public User(String userName, String password, String firstName, String lastName, int age, String phoneNumber) {
 		this.id = UUID.randomUUID();
 		this.userName = userName;
+        this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.age = age;
@@ -43,10 +43,10 @@ public class User {
 	}
 	
 	//loaded preexisting user from json
-	public User(UUID id, String userName, String firstName, String lastName, 
-                int age, String phoneNumber) {
+	public User(UUID id, String userName, String password, String firstName, String lastName, int age, String phoneNumber) {
 		this.id = id;
 		this.userName = userName;
+        this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.age = age;
@@ -56,10 +56,25 @@ public class User {
 	public UUID getId() {
 		return id;
 	}
+    
+    public void setUserName(String userName)
+    {
+        this.userName = userName;
+    }
 	
 	public String getUserName() {
 		return userName;
 	}
+
+    public void setPassword(String password)
+    {
+        this.password = password;
+    }
+
+    public String getPassword() 
+    {
+        return password;
+    }
 	
 	public String getFirstName() {
 		return firstName;
@@ -69,6 +84,7 @@ public class User {
 		this.firstName = firstName;
 	}
 	
+
 	public String getLastName() {
 		return lastName;
 	}
@@ -76,6 +92,11 @@ public class User {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+
+    public void setAge(int age)
+    {
+        this.age = age;
+    }
 	
 	public int getAge() {
 		return age;
