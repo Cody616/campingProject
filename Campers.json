@@ -1,0 +1,18 @@
+[{  
+    "firstName":"Kyle",
+
+    "lastName":"McCloksey",
+
+    "phoneNumber":"443-714-0530",
+
+    "age":12, 
+
+    "Allergies": ["Bannans", "Corn", "Cheese"], 
+
+
+    "gender": "MALE", 
+
+    "EmergencyContacts": [{"firstName": "Dawn", "lastName": "McCloksey", "phoneNumber": "432-454-1231", "age":39, "email": "dmcclo2@gmail.com"}] 
+
+   
+}]
