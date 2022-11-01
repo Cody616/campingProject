@@ -12,7 +12,6 @@ public Director(String firstName, String lastName, String phoneNumber
 
 
 
-
 /*
  * director should have access to all cabins
  * 

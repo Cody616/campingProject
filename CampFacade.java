@@ -4,7 +4,7 @@ public class CampFacade {
     
      private User currentUser;
 
-     private Cabins cabins;
+     private Items items;
      //^^should be cabins
 
      //currentUser variable keeps track of who is currently logged in
@@ -13,7 +13,7 @@ public class CampFacade {
          //gets the singleton class, "sets them up"
          //assigns thier values to respective objects
  
-         cabins = Cabins.getInstance();
+         items = Items.getInstance();
          users = Users.getInstance();
          System.out.println("CAMP FACADE OBJECT IS CREATED.");
          System.out.println();
@@ -21,24 +21,19 @@ public class CampFacade {
      }
      
      //creates a new user account
-     public boolean createAccount(String userName, String firstName, String lastName, int age, String phoneNumber)
+     public boolean createAccount(String userName, String password, String firstName, String lastName, int age, String phoneNumber)
      {
          //adds user to user array list 
-         return users.addUser(userName,  firstName,  lastName,  age,  phoneNumber);
+         return users.addUser(userName, password, firstName,  lastName,  age,  phoneNumber);
      }
 
      /*
       * !!!!!!
       */
-     public boolean createCabin(String title, String author)
+     public boolean createItem(String title, String author)
      {
          //adds user to user array list 
-         //cabins.add
-        //  cabins.addItem(title, author);
-
-        //should be this but idk why it's not doing this        
-
-         return cabins.addCabin(title, author);
+         return items.addItem(title, author);
      }
      
      //if true, currentUser variable gets assigneed
@@ -78,23 +73,46 @@ public class CampFacade {
    /*
     * !!!!!!
     */
-
-   //passes item singleton
-   public boolean findCabin(String cabinName) {
+   public boolean findItem(String itemName) {
         //writing the items can be done in the data writer
         //loading the items can be done in data loader
-        return cabins.haveCabin(cabinName);
+        return items.haveItem(itemName);
     }
  
-    public boolean checkout(String cabinName) {
-        if(!findCabin(cabinName))return false;
-        
-        //checkout the cabin
-        //need a user then have them checkout an item
-        return true;
-    }
+ 
 
+ 
  ////////////////this section will be the special director methods that will maniupulate the cabins class/////
+     //passes item singleton
+    //  public boolean findItem(String itemName) {
+    //      //writing the items can be done in the data writer
+    //      //loading the items can be done in data loader
+    //      return items.haveItem(itemName);
+    //  }
+     
+    //  public boolean checkout(String itemName) {
+    //      if(!findItem(itemName))return false;
+         
+    //      //checkout the item
+    //      //need a user then have them checkout an item
+    //      return true;
+    //  }
+     
+    //  public boolean rateItem(String itemName, int rating) {
+    //      if(!findItem(itemName))return false;
+         
+    //      if(rating < 0 || rating > 5) return false;
+         
+    //      return true;
+    //  }
+     
+    //  public boolean payFine(int amount) {
+    //      if(amount < 0) return false;
+         
+    //      return true; 	//successfully paid fine
+    //  }
+ //////////////////////////////////////////////
+ 
      
      public void logout() {
          //when the whole application is closed, saves it to the json.
@@ -103,10 +121,9 @@ public class CampFacade {
          //manipulates data thru arraylist format,
          //saves everything when all said and done
          //SAVES ONE TIME
-         cabins.saveCabins();
+         items.saveItems();
          users.saveUsers();
      }
-
  }
  
 

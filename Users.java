@@ -3,10 +3,6 @@ import java.util.ArrayList;
 public class Users {
 	private static Users users;
 	private static ArrayList<User> userList;
-
-	//campersList is in usersList????
-
-	
 	
 	/*
 	 * calls for json to give the arraylist of all data and stores it
@@ -119,7 +115,7 @@ public class Users {
 		return userList;
 	}
 	
-	public boolean addUser(String userName, String firstName, String lastName, int age, String phoneNumber) {
+	public boolean addUser(String userName, String password, String firstName, String lastName, int age, String phoneNumber) {
 
 		// System.out.println("INSIDE ADDUSER METHOD");
 		// System.out.println(haveUser(userName));
@@ -135,7 +131,7 @@ public class Users {
 
 		// }
 		
-		userList.add(new User(userName, firstName, lastName, age, phoneNumber));
+		userList.add(new User(userName, password, firstName, lastName, age, phoneNumber));
 		System.out.println("USER WAS ADDED.");
 		return true;
 	}
