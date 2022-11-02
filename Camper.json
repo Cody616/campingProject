@@ -1,0 +1,23 @@
+[{  
+    "firstName":"Kyle",
+
+    "lastName":"McCloksey",
+
+    "phoneNumber":"443-714-0530",
+
+    "age":12, 
+
+    "Allergies": ["Bannans", "Corn", "Cheese"], 
+
+
+    "gender": "MALE", 
+
+    "EmergencyContacts": [{"firstName": "Dawn", "lastName": "McCloksey", "phoneNumber": "432-454-1231", "age":39, "email": "dmcclo2@gmail.com"}] 
+
+   /* "Cabin":
+    [{
+            "Schedule":["Breakfast", "Arts_And_Crafts", "Lunch", "Sports", "Dinner", "Camp_Fire"], 
+            "Campers": ["Kyle McCloskey", "Doug Smith", "Tony Soprano", "Mark Man", "Joe todd", "Smithy bort", "Timmy twobones", "guy numberone"],
+            "Counselors":["firstNameLasName"]
+    }]*/
+}]

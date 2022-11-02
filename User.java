@@ -4,7 +4,7 @@ public class User {
     public String name;
     public double age;
     public ArrayList<String> allergies = new ArrayList<String>();
-    //public ArrayList<EmergencyContacts> emergencyContact = new ArrayList<EmergencyContacts>();
+    public ArrayList<EmergencyContacts> emergencyContact = new ArrayList<EmergencyContacts>();
 
 
 

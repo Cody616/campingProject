@@ -1,0 +1,13 @@
+[{
+    "firstName": "Smith",
+    "lastName": "Lord",
+    "assignedCabin": "cabin one",
+    "gender": "MALE",
+    "EmergencyContacts":[{
+                            "firstName": "tina", 
+                            "lastName": "james", 
+                            "phoneNumber": "435-464-4331", 
+                            "age":56, 
+                            "email": "tjames2@gmail.com"
+                        }] 
+}]
