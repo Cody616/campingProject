@@ -1,43 +1,15 @@
-import java.util.UUID;
-
 public class Cabin {
+    
+    private static int cabinNumber;
+    //^^when assigning array of cabins, that is when this gets assigned.
+    private static int ageMin;
+    private static int ageMax;
 
-	private UUID id;
-	private String title;
-	private String author;
-	
-	//new Item
-	public Cabin(String title, String author) {
-		this.id = UUID.randomUUID();
-		this.title = title;
-		this.author = author;
-	}
+    private static String counselorUUID;
+    private static String [] camperUUIDs;
+    private static Schedule[] weekSchedule = new Schedule[7];
 
-	//loads preexisting item from json
-	public Cabin(UUID id, String title, String author) {
-		this.id = id;
-		this.title = title;
-		this.author = author;
-	}
+    
 
-	public UUID getId() {
-		return id;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public String getAuthor() {
-		return author;
-	}
-	
-	public void setAuthor(String author) {
-		this.author = author;
-	}
-
+   
 }
