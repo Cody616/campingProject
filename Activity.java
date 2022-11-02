@@ -18,8 +18,6 @@ public class Activity {
         // this.startTime = startTime;
         // this.endTime = endTime;
 
-       
-
     }
 
     public Activity(){}
@@ -32,7 +30,16 @@ public class Activity {
     public void setActivityName(String activityName)
     {
         this.activityName = activityName;
-    
+    }
+
+    public String getLocation()
+    {
+        return this.location;
+    }
+
+    public void setLocation(String location)
+    {
+        this.location = location;
     }
     
     public String toString() {
