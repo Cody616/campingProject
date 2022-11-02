@@ -2,8 +2,9 @@ import java.util.Scanner;
 
 public class CampUI {
     private static final String WELCOME_MESSAGE = "Welcome to our Camp Management App.";
-	private String[] mainMenuOptions = {"Create Account", "Login","Create Cabin","Find Cabin"
-	,"Checkout Cabin","Logout"};
+	//private String[] mainMenuOptions = {"Create Account", "Login","Create Cabin","Find Cabin"
+	//,"Checkout Cabin","Logout"};
+	private String [] mainMenuOptions = {"Register", "Login", "View Camps", "Exit"};
 
     /*
      * ^^should have view cabin schedule method, 
@@ -32,26 +33,11 @@ public class CampUI {
      */
 
 
-     /*
-      * Director UI: 
-
-      removeCamper();
-      addCamper();
-      removeCounselor();
-      addCounselor();
-
-      viewTotalCampers();
-      viewTotalCounselors();
-
-      viewTotalCabins();
-      //^^would the whole system of user be dependent on their cabin type???
-    //^^would basically be being able to use the cabin object
-
-      //director makes the above logic not work
-      */
-
+    
 	private Scanner scanner;
 	private CampFacade campFacade;
+
+	Scanner input = new Scanner(System.in);
 	
 	CampUI(){
 		scanner = new Scanner(System.in);
@@ -80,41 +66,21 @@ public class CampUI {
 		
 		//actually runs the commands
 			switch(userCommand) {
-				case(0):
+				case(1):
 					createAccount();
 					break;
-				case(1):
+				case(2):
 				//calls the login function
 				// System.out.println("LOGIN");
 					login();
 					break;
-				case(2):
+				case(3):
 				// System.out.println("create item");
 					createCabin();
 					break;
-				case(3):
-				// System.out.println("find item");
-					findCabin();
-					break;
 				case(4):
-				 System.out.println("checkout item");
-					 checkoutCabin();
-					break;
-				case(5):
-				 System.out.println("rate item");
-					// rateItem();
-					break;
-				case(6):
-				 System.out.println("pay fine");
-					// payFine();
-					break;
+				//exit();
 
-				// case(7):
-				// System.out.println("logout");
-				// library.logout();
-				// break;
-				//the way she has it is where it doesnt need this as this same thing is found on the outside of it which is wierd.
-				
 			}
 		}
 		System.out.println("Good bye, and have a nice day");
@@ -142,7 +108,38 @@ public class CampUI {
 		return -1;
 	}
 	
+private String[] accOptions = {"Guardian", "Coordinator", "Camp Admin", "Exit"};
+
 	private void createAccount() {
+		User user = null;
+		System.out.println("Registering as a: ");
+		System.out.println("1. Guardian");
+		System.out.println("2. Coordinator");
+		System.out.println("3. Camp Admin");
+		System.out.println("4. Exit");
+
+		
+
+		int response = getUserCommand(accOptions.length);
+
+
+
+
+		switch(response) {
+			case(1):
+				createAccountGuardian();
+				break;
+			case(2):
+			//calls the login function
+			// System.out.println("LOGIN");
+				login();
+				break;
+			case(3):
+			// System.out.println("create item");
+				createCabin();
+				break;
+			case(4):
+			//exit();
 		String userName = getField("Username");
 		String firstName = getField("First Name");
 		String lastName = getField("Last Name");
@@ -158,6 +155,66 @@ public class CampUI {
 		}
 	}
 
+    public String promptForStringResponse(){
+        System.out.print("> ");
+        String response = input.nextLine();
+        response = response.trim();
+        return response;
+    }
+
+	public String createPassword(){
+        String password = "";
+        boolean isPasswordMatch = false;
+        while(!isPasswordMatch){
+            System.out.println("Create your password: ");
+            String pass1 = promptForStringResponse();
+            System.out.println("Enter your password again: ");
+            password = promptForStringResponse();
+            isPasswordMatch = (pass1.equals(password));
+            if(!isPasswordMatch){
+                System.out.println("Passwords didn't match. Try again.");
+            }
+        }
+        return password;
+    }
+    
+
+
+	public String promptForPhone(){
+        // to do: perform checks here
+        System.out.println("Enter the phone number [XXX-XXX-XXXX]: ");
+        return promptForStringResponse();
+    }
+	public String promptForBirthDate(){
+        // to do: perform checks here
+        System.out.println("Enter the birth date [YYYY-MM-DD]: ");
+        return promptForStringResponse();
+    }
+	public String promptForAddress(){
+        System.out.println("Enter the address: ");
+        return promptForStringResponse();
+    }
+    
+    public String promptForEmail(){
+        // to do: perform checks here
+        System.out.println("Enter the email: ");
+        return promptForStringResponse();
+    }
+
+	private void createAccountGuardian()
+	{
+		System.out.println("Enter your first name: ");
+        String firstName = promptForStringResponse();
+        System.out.println("Enter your last name: ");
+        String lastName= promptForStringResponse();
+        System.out.println("Create your username: ");
+        String username= promptForStringResponse();
+        String password = createPassword();
+        String birthDate = promptForBirthDate();
+        String phone = promptForPhone();
+        String email = promptForEmail();
+        String address = promptForAddress();
+	}
 	//this would be like a createCabin method.
 	private void createCabin() {
 		String title = getField("Title");
