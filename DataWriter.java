@@ -54,7 +54,7 @@ public class DataWriter extends DataConstants {
         return userDetails;
 	}
 
-	//ITEMS
+	//CABINS
 	public static void saveCabins() {
 
 		//creates a users object and gets it's current instance.

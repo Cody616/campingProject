@@ -18,6 +18,4 @@ public abstract class DataConstants {
 	protected static final String CABIN_TITLE = "cabinTitle";
 	protected static final String CABIN_AUTHOR = "cabinAuthor";
 
-	
-
 }

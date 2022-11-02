@@ -10,13 +10,14 @@ public class Schedule {
     private ArrayList<Activity> activities;
     private Activity[] orderedActivities;
     //^^sources the rest of the things that will fill up the schedule from activities object
-    private static String[] schedule = new String[8];
+    private static String[] schedule;
 
 
-    public Schedule(ArrayList<Activity> activities, String[] schedule){ 
+    public Schedule(ArrayList<Activity> activities){ 
 
         this.activities = activities;
         this.orderedActivities = new Activity[5];
+        this.schedule = new String[8];
 
         //^^stores the randomly generated 
         this.schedule[0] = "8:00 am - 9:00 am Breakfast. \nLocation: Cafeteria";//0
@@ -37,6 +38,7 @@ public class Schedule {
         //     String name = input;
         // System.out.println("Please enter the activity name in which you would like to add.");
 
+        //adds activity to arrayList
         this.activities.add(activity);
     }
 
@@ -54,19 +56,19 @@ public class Schedule {
         }
     }
 
-
     //NEED .RANDOMIZE. ONCE CREATED IN HERE, CAN BE CALLED IN SESSION CLASS
     public void randomizeSchedule()
     {
-        Collections.shuffle(activities); // shuffles main activities arraylist
+        Collections.shuffle(activities); 
+        // shuffles main activities arraylist
 
-        for(int i = 0; i < activities.size(); i++)
-        {
-            
-        }
+        // for(int i = 0; i < activities.size(); i++)
+        // {
+        //     orderedActivities[i] = activities.get(i);
+        // }
 
+        
         //calls schedule.randomize method. << we're in schedule dumm
-
         //should loop through arraylist of activities.
     }
 
@@ -95,7 +97,32 @@ public class Schedule {
     //checks if schedule has been assigned to the same schedule twice
     public boolean repeats(Schedule schedule)
     {
+        if (schedule == null)   
+            return false;  
 
+        ArrayList<Activity> activityHolder = schedule.getActivities();
+
+        for(int i = 0; i < this.activities.size(); i++)
+        {
+
+            if(activityHolder.get(i).equals(this.activities.get(i)))
+            {
+                return true;
+            }
+            //^^should be comparing the array of length 5
+
+
+
+            // String previousValue = this.activities.get(i).getActivityName();
+
+            // if(this.activities.get(i).getActivityName().equals(activityHolder.get(i).getActivityName()))
+            // {
+            //     return true;
+            // }
+
+        }
+        
+        return false;
     }
 
 
@@ -110,8 +137,10 @@ public class Schedule {
             {
                 continue;
             }
-            schedule[i] += orderedActivities[i].toString();
-            // schedule[i] += activities.get(i).toString();
+            // schedule[i] += orderedActivities[i].toString();
+
+            //appends activities to the end of the schedule string array
+            schedule[i] += activities.get(i).toString();
 
             // font = schedule[i];
         }

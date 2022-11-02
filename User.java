@@ -1,12 +1,14 @@
 import java.util.UUID;
 
 public class User {
+
 	private UUID id;
 	private String userName;
 	private String firstName;
 	private String lastName;
 	private int age;
 	private String phoneNumber;
+    
   //private String cabinID;
 
   //Is a string as for director, if the cabinID is all then the user 
@@ -37,7 +39,7 @@ public class User {
 		this.phoneNumber = phoneNumber;
 
         //is missing:
-         // this.allergies = allergies;
+        // this.allergies = allergies;
         // this.emergencyContacts = emergencyContacts;
         // this.totalCabins = totalCabins;
 	}

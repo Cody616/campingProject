@@ -1,5 +1,3 @@
-import java.util.Random;
-
 public class Activity {
 
     private String activityName;
@@ -45,5 +43,6 @@ public class Activity {
     public String toString() {
         return this.activityName  + " \nLocation: " + location + "\n";
     }
+
 }
 

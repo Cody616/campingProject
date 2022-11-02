@@ -1,11 +1,11 @@
 import java.util.ArrayList;
 
 public class Users {
+
 	private static Users users;
 	private static ArrayList<User> userList;
 
 	//campersList is in usersList????
-
 	
 	
 	/*
@@ -57,6 +57,7 @@ public class Users {
 
 	//loops through user array list, takes in the correct username, and then returns true or false if found
 	public boolean haveUser(String userName) {
+        
 		System.out.println();
 		System.out.println("inside USERS object's HAVEUSER method.");
 		// System.out.println("Checks if there is a user or not");
