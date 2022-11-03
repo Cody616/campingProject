@@ -97,37 +97,21 @@ public class CampUI {
 					//createAccount();
 					//System.out.println("hip");
 					break;
-				case(1):
+				case(1)://login
 				//calls the login function
 				// System.out.println("LOGIN");
 					login();
 					break;
-				case(2):
+				case(2)://view camp sites
 				// System.out.println("create item");
-					createItem();
+					//createItem();
 					break;
-				case(3):
+				case(3)://logout
 				// System.out.println("find item");
-					findItem();
+					System.out.println("Goodbye");
+                    System.exit(0);
 					break;
-				case(4):
-				 System.out.println("checkout item");
-					// checkoutItem();
-					break;
-				case(5):
-				 System.out.println("rate item");
-					// rateItem();
-					break;
-				case(6):
-				 System.out.println("pay fine");
-					// payFine();
-					break;
-
-				// case(7):
-				// System.out.println("logout");
-				// library.logout();
-				// break;
-				//the way she has it is where it doesnt need this as this same thing is found on the outside of it which is wierd.
+				
 			}
 		}
 		System.out.println("Good bye, and have a nice day");
