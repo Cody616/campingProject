@@ -168,6 +168,45 @@ public class CampUI {
 				  }
 		}
 		
+        /* boutta add a bunch of methods that are gonna be utilized later for displaying 
+         * 
+         * 
+         */
+        //starting w parent ui
+        private String [] parentOp = {"Childs", "Cabins", "Cabin Info", "Exit"};
+        private void displayParentOptions() {
+            System.out.println("\n************ Parent *************");
+            for(int i=0; i< parentOp.length; i++) {
+                System.out.println((i+1) + ". " + parentOp[i]);
+            }
+            System.out.println("\n");
+        }
+        private String [] childInfoMenu = {"View Children", "Add Child", "Remove Child", "Exit"};
+        private void displayChildInfoOptions() {
+            System.out.println("\n************ Child Info *************");
+            for(int i=0; i< childInfoMenu.length; i++) {
+                System.out.println((i+1) + ". " + [i]);
+            }childInfoMenu
+            System.out.println("\n");
+        }
+        private String [] cabinOp = {"View Cabins", "Add Child to Cabin", "Exit"};
+        private void displayParentCabinOptions() {
+            System.out.println("\n************ Parent *************");
+            for(int i=0; i< cabinOp.length; i++) {
+                System.out.println((i+1) + ". " + cabinOp[i]);
+            }
+            System.out.println("\n");
+        }
+        private String [] testdontknow = {"Childs", "Cabins", "Cabin Info", "Exit"};
+        private void displayTestDontKnow() {
+            System.out.println("\n************ Parent *************");
+            for(int i=0; i< testdontknow.length; i++) {
+                System.out.println((i+1) + ". " + testdontknow[i]);
+            }
+            System.out.println("\n");
+        }
+        //--------------parent ui side
+
 
 	private void displayMainMenu() {
 		System.out.println("\n************ Main Menu *************");
