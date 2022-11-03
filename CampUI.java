@@ -77,9 +77,21 @@ public class CampUI {
 		//actually runs the commands
 			switch(userCommand) {
 				case(0)://click register
-					displayRegOptions();//asks what kind of user
-					findUserType();//finds type user and creates acc
-					displayAdminOptions();
+                displayRegOptions();
+                findUserType();//finds type user and creates acc
+                    switch(userCommand)
+                    {
+                        case(0)://parent
+                        break;
+                        case(1)://camp counselor
+                        break;
+                        case(2)://camp admin
+                        displayAdminOptions();
+                        break;
+                    }
+					//displayRegOptions();//asks what kind of user
+					// findUserType();//finds type user and creates acc
+					//displayAdminOptions();
 					//testVar = false;
 					//createdesired
 					//createAccount();
