@@ -4,6 +4,7 @@ public class CampUI {
     private static final String WELCOME_MESSAGE = "Welcome to our Camp Management App.";
 	private String[] mainMenuOptions = {"Register", "Login","View Camp Sites","Logout"};
 
+	private String[] registerOptions = {"Register as a Camp Director", "Register as a Camp Counselor", "Register as a Parent", "Register as a Camper"};
     /*
      * ^^should have view cabin schedule method, 
      * 
