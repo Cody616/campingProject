@@ -119,6 +119,24 @@ public class CampUI {
 	
 //methods that print messages to the user along with referneces the library objecti
 
+private String [] campViewMenu = {"See Camp", "Cabins", "Exit"};
+private void displayCampViewMenu() {
+    System.out.println("\n************ Cabin Menu *************");
+    for(int i=0; i< campViewMenu.length; i++) {
+        System.out.println((i+1) + ". " + campViewMenu[i]);
+    }
+    System.out.println("\n");
+}
+
+private String [] editCabinMenu = {"Edit Camp Name", "Edit Camp Theme", "Edit Camp year", "Exit"};
+private void displayEdutCabinMenu() {
+    System.out.println("\n************ Edit Camp Menu *************");
+    for(int i=0; i< editCabinMenu.length; i++) {
+        System.out.println((i+1) + ". " + editCabinMenu[i]);
+    }
+    System.out.println("\n");
+}
+
 	private void getAdminOption()
 	{
 		int userCommand = getUserCommand(regOptions.length);
@@ -207,15 +225,35 @@ public class CampUI {
         }
         //--------------parent ui side
 
-
-	private void displayMainMenu() {
-		System.out.println("\n************ Main Menu *************");
-		for(int i=0; i< mainMenuOptions.length; i++) {
-			System.out.println((i+1) + ". " + mainMenuOptions[i]);
+        //camp sounselor start
+        private String [] counselorHome = {"Cabins, Emergency Contacts", "Exit"};
+	private void displayCounselorHome() {
+		System.out.println("\n************ Counselor Home *************");
+		for(int i=0; i< counselorHome.length; i++) {
+			System.out.println((i+1) + ". " + counselorHome[i]);
 		}
 		System.out.println("\n");
 	}
-	
+
+    private String [] cabinMenu = {"Cabins, Emergency Contacts", "Exit"};
+	private void displayCabinMenu() {
+		System.out.println("\n************ Cabin Menu *************");
+		for(int i=0; i< cabinMenu.length; i++) {
+			System.out.println((i+1) + ". " + cabinMenu[i]);
+		}
+		System.out.println("\n");
+	}
+    private String [] emergencyContactsMenu = {"View Emergency Contacts", "Exit"};
+	private void displayEmergencyContactsMenu() {
+		System.out.println("\n************ Emergency Contacts Menu *************");
+		for(int i=0; i< emergencyContactsMenu.length; i++) {
+			System.out.println((i+1) + ". " + emergencyContactsMenu[i]);
+		}
+		System.out.println("\n");
+	}
+//-------------------------counselor 
+
+
 	private String[] adminOptions = {"View Camp Site", "Edit Camp Site", "Create New Camp", "Exit"};
 	private void displayAdminOptions()
 	{
