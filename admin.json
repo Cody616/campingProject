@@ -1,0 +1,12 @@
+[
+{
+  "firstName": "campAdmin",
+  "lastName": "lastName",
+  "password": "qwerty",
+  "address": "1234 main St",
+  "id": "8a2b1551-7142-4fc1-94f3-179f32edd66c",
+  "age": 40,
+  "email": "mail@adress.com",
+  "username": "admin"
+}
+]
