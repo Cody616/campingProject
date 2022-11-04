@@ -17,8 +17,6 @@ public class User {
     //EACH USER SHOULD HAVE A CABIN ID AKA THE USER'S ASSIGNED CABIN NUMBER. 
     //THIS CAN LATER BE USED TO REFER TO THE FRONT END SEPERATE CABINS OBJECT
 
-
-
     
 //is missing:
     // private ArrayList<String> allergies = new ArrayList<String>();

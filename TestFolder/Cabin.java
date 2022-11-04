@@ -1,22 +1,20 @@
 import java.util.ArrayList;
 
 public class Cabin {
-    
-    private static int cabinNumber;
+
+    private int cabinNumber;
     //^^when assigning array of cabins, that is when this gets assigned.
-    private static int ageMin;
-    private static int ageMax;
+    private int ageMin;
+    private int ageMax;
 
-    private static String counselorUUID;
-    // private static String [] camperUUIDs;
-    private static ArrayList<String> camperUUIDs = new ArrayList<String>();
-    private static Schedule[] weekSchedule = new Schedule[7];
-
+    private String counselorUUID;
+    private ArrayList<String> camperUUIDs;
+    private Schedule[] weekSchedule = new Schedule[7];
 
     //^^should be stored in sessions class???? bc the same camp can have multiple schedules??
     //^no. each session would have a cabin associated with it???
 
-    public Cabin(int cabinNumber, int ageMin, int ageMax, String counselorUUID, ArrayList<String> camperUUIDs)
+    public Cabin(int cabinNumber, int ageMin, int ageMax, String counselorUUID, String[] camperUUIDs)
     {
         this.cabinNumber = cabinNumber;
         this.ageMin = ageMin;
@@ -25,92 +23,83 @@ public class Cabin {
         this.camperUUIDs = camperUUIDs;
     }
 
-    public static int getCabinNumber() {
+    public int getCabinNumber() {
         return cabinNumber;
     }
-
-    public static void setCabinNumber(int cabinNumber) {
-        Cabin.cabinNumber = cabinNumber;
+    public void setCabinNumber(int cabinNumber) {
+        this.cabinNumber = cabinNumber;
     }
 
-    public static int getAgeMin() {
+    public int getAgeMin() {
         return ageMin;
     }
-
-    public static void setAgeMin(int ageMin) {
-        Cabin.ageMin = ageMin;
+    public void setAgeMin(int ageMin) {
+        this.ageMin = ageMin;
     }
 
-    public static int getAgeMax() {
+    public int getAgeMax() {
         return ageMax;
     }
-
-    public static void setAgeMax(int ageMax) {
-        Cabin.ageMax = ageMax;
+    public void setAgeMax(int ageMax) {
+        this.ageMax = ageMax;
     }
 
-    public static String getCounselorUUID() {
+    public String getCounselorUUID() {
         return counselorUUID;
     }
-
-    public static void setCounselorUUID(String counselorUUID) {
-        Cabin.counselorUUID = counselorUUID;
+    public void setCounselorUUID(String counselorUUID) {
+        this.counselorUUID = counselorUUID;
     }
 
-    /**
-     * @param index
-     * @return
-     */
-    public static String getCamperUUID(int index)
-    {
-        return this.camperUUIDs.get(index);
+    public ArrayList<String> getCamperUUIDs() {
+        return camperUUIDs;
+    }
+    public void setCamperUUIDs(ArrayList<String> camperUUIDs) {
+        this.camperUUIDs = camperUUIDs;
+    }
+
+    public int getCamperAmount() {
+        return camperUUIDs.size();
     }
 
 
 
-//SCHEDULE STUFF    
-    public static Schedule[] getWeekSchedule() {
-        return Session.weekSchedule;
+//SCHEDULE STUFF
+    public Schedule[] getWeekSchedule() {
+        return weekSchedule;
     }
-
-    public static void setWeekSchedule(Schedule[] weekSchedule) {
-        Cabin.weekSchedule = weekSchedule;
+    public void setWeekSchedule(Schedule[] weekSchedule) {
+        this.weekSchedule = weekSchedule;
     }
 
     public static String getMondaySchedule(Schedule[] weekSchedule)
     {
         return weekSchedule[0].toString();
     }
-
     public static String getTuesdaySchedule(Schedule[] weekSchedule)
     {
         return weekSchedule[1].toString();
     }
-    
     public static String getWednesdaySchedule(Schedule[] weekSchedule)
     {
         return weekSchedule[2].toString();
     }
-
     public static String getThursdaySchedule(Schedule[] weekSchedule)
     {
         return weekSchedule[3].toString();
     }
-
     public static String getFridaySchedule(Schedule[] weekSchedule)
     {
         return weekSchedule[4].toString();
     }
-
     public static String getSaturdaySchedule(Schedule[] weekSchedule)
     {
         return weekSchedule[5].toString();
     }
-
     public static String getSundaySchedule(Schedule[] weekSchedule)
     {
         return weekSchedule[6].toString();
     }
-    
-   
+
+
 }
