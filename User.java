@@ -7,6 +7,7 @@ public class User {
 	private String firstName;
 	private String lastName;
 	private int age;
+    public Gender gender;
 	private String phoneNumber;
  	
 	//loaded preexisting user from json
@@ -59,76 +60,18 @@ public class User {
 
 
 
+   
 
 
-
-
-    //setAllergies is a type of arraylsit string
-    //need set allergies, <<arraylist of strings for allergies
-    // public void setAllergies(ArrayList<String> allergy)
-    // {
-    //     //passes a string arraylist of allergies
-    //     this.allergies = allergies;
-    // }
-
-    // public ArrayList<String> getAllergies()
-    // {
-    //     // for(int i = 0; i < allergies.size(); i++)
-    //     // {
-    //     //     System.out.println("Allergy # "  + (i + 1) + ": " + allergies.get(i));
-    //     // }
-
-    //     return this.allergies;
-    // }
-
-    //needs set gender
-
-
-    //emergency contacts is its own object
-    
-    //needs setEmergency contacts
-    //should create the arraylist of emergency contacts in here????
-    //this feels like the right move
-
-    //^^this is the same thing done for cabins???
-    //would also make sense per se but cabins have an arraylist of campers in them along wiht arraylist of schedules
-    // public void setEmergencyContacts(EmergencyContacts emergencyContacts)
-    // {
-        
-    // }
-
-    // // returns arraylist of emergency contacts. Or should the emergencyContacts class just do this already??? they kinda do the same thing sooo....
-    // public ArrayList<EmergencyContacts> getEmergencyContacts()
-    // {
-    //     return this.emergencyContacts;
-    // }
+ 
+ 
 
 
 
 
 
-    //needs setCabin
-    //^^how would this work for director??
-    //^^userList class
-    //^^userList should dictate what the user sees based on the cabin they are assigned to, 
-    //unless they are the director which has special roles from the UserList class
 
     
 
-    /*
-     * WHAT THE USER JSON WAS LOOKING LIKE:
-     * 
-     * [{"firstName":"Tayna","lastName":"Marks","phoneNumber":"803-555-4545", "age": 18, 
-"allergies": ["frozen yogurt", "covid"], 
-"emergencyContacts": [
-    {
-        "firstName": "yup",
-        "lastName": "forFree",
-        "age": 10,
-        "phoneNumber": "843-555-5555",
-        "email": "yahoo@yahoo.com"
-    }
-]
-}]
-     * 
-     */
+   
+
