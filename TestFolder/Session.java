@@ -14,6 +14,8 @@ import java.util.Scanner;
 //     return this.endDate;
 // }
 
+
+
 public class Session {
 
     //this is all done when creating a camp object, which will pass down the values to the session/ sessionList class
@@ -36,9 +38,6 @@ public class Session {
 
     private int activitiesSize;
     private Activity[] activities = new Activity[activitiesSize];
-
-    private String startDate;
-    private String endDate;
     
     // private ArrayList<String> activities;
     // private Activities activities;
@@ -64,7 +63,6 @@ public class Session {
 
         // this.startDate = startDate;
         // this.endDate = endDate;
-
         
         //^^^^total activities
     }
@@ -206,11 +204,13 @@ public class Session {
      */
     public void assignSchedule()
     {
-        for(int i = 0; i < cabins.length; i++)
-        {
-            cabins[i].setWeekSchedule(weekSchedule);
-        }
+        // for(int i = 0; i < cabins.length; i++)
+        // {
+        //     cabins[i].setWeekSchedule(weekSchedule);
+        // }
 
+
+        
 
         //^^when assigning, should call schedule methods like equals
         // and repeats so that all the cabins can get assigned correctly.
@@ -272,46 +272,46 @@ public class Session {
      * 
      * 
      */
-//    public static void main(String[] args)
-//    {
-//     Scanner keyboard = new Scanner(System.in);
+   public static void main(String[] args)
+   {
+    // Scanner keyboard = new Scanner(System.in);
 
-//     System.out.println();
-//     System.out.println("Creating new session.");
-//     Session session = null;
+    // System.out.println();
+    // System.out.println("Creating new session.");
+    // Session session = null;
 
-//     System.out.println("Please enter the Theme of the session.");
-//         session.setTheme(keyboard.nextLine());
+    // System.out.println("Please enter the Theme of the session.");
+    //     session.setTheme(keyboard.nextLine());
 
-//     System.out.println("Please enter the Description of the session.");
-//         session.setDescription(keyboard.nextLine());
+    // System.out.println("Please enter the Description of the session.");
+    //     session.setDescription(keyboard.nextLine());
     
-//     System.out.println("Please enter the amount of Cabins you would like to make.");
-//     System.out.println("There is a limit to 6 cabins per each session.");
-//     session.setCabinsSize(keyboard.nextInt());
+    // System.out.println("Please enter the amount of Cabins you would like to make.");
+    // System.out.println("There is a limit to 6 cabins per each session.");
+    // session.setCabinsSize(keyboard.nextInt());
 
-//     //needs like if(getCabin is false) or something
-//     Cabin[] cabinsss = session.getCabins();  
+    // //needs like if(getCabin is false) or something
+    // Cabin[] cabinsss = session.getCabins();  
 
-//     System.out.println("Setting up information for each cabin.");
+    // System.out.println("Setting up information for each cabin.");
 
-//     for(int i = 0; i < cabinsss.length; i++)
-//     {
-//         //sets the cabin number associated with the cabin
-//         cabinsss[i].setCabinNumber(i+1);
+    // for(int i = 0; i < cabinsss.length; i++)
+    // {
+    //     //sets the cabin number associated with the cabin
+    //     cabinsss[i].setCabinNumber(i+1);
 
-//         System.out.println("Please enter the Minimum age of Cabin #: " + i+1);
-//         cabinsss[i].setAgeMin(keyboard.nextInt());
+    //     System.out.println("Please enter the Minimum age of Cabin #: " + i+1);
+    //     cabinsss[i].setAgeMin(keyboard.nextInt());
 
-//         System.out.println("Please enter the Maximum age of Cabin #: " + i+1);
-//         cabinsss[i].setAgeMax(keyboard.nextInt());
+    //     System.out.println("Please enter the Maximum age of Cabin #: " + i+1);
+    //     cabinsss[i].setAgeMax(keyboard.nextInt());
 
-//         cabinsss[i].setCounselorUUID(null);
-//         // cabinsss[i].set
+    //     cabinsss[i].setCounselorUUID(null);
+    //     // cabinsss[i].set
         
-//     }
+    // }
    
 
-  // } 
+  } 
   
 }

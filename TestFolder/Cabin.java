@@ -9,12 +9,12 @@ public class Cabin {
 
     private String counselorUUID;
     private ArrayList<String> camperUUIDs;
-    private Schedule[] weekSchedule = new Schedule[7];
+    private String[] weekSchedule = new String[7];
 
     //^^should be stored in sessions class???? bc the same camp can have multiple schedules??
     //^no. each session would have a cabin associated with it???
 
-    public Cabin(int cabinNumber, int ageMin, int ageMax, String counselorUUID, String[] camperUUIDs)
+    public Cabin(int cabinNumber, int ageMin, int ageMax, String counselorUUID, ArrayList<String> camperUUIDs)
     {
         this.cabinNumber = cabinNumber;
         this.ageMin = ageMin;
@@ -65,10 +65,10 @@ public class Cabin {
 
 
 //SCHEDULE STUFF
-    public Schedule[] getWeekSchedule() {
+    public String[] getWeekSchedule() {
         return weekSchedule;
     }
-    public void setWeekSchedule(Schedule[] weekSchedule) {
+    public void setWeekSchedule(String[] weekSchedule) {
         this.weekSchedule = weekSchedule;
     }
 
