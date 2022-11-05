@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.UUID;
 
 public class User {
@@ -7,44 +8,9 @@ public class User {
 	private String lastName;
 	private int age;
 	private String phoneNumber;
-  //private String cabinID;
-
-  //Is a string as for director, if the cabinID is all then the user 
-  //will have full access to manipulate the json cabin files.
-
-    //EACH USER SHOULD HAVE A CABIN ID AKA THE USER'S ASSIGNED CABIN NUMBER. 
-    //THIS CAN LATER BE USED TO REFER TO THE FRONT END SEPERATE CABINS OBJECT
-
-
-
-    
-//is missing:
-    // private ArrayList<String> allergies = new ArrayList<String>();
-    // private Gender gender;
-    // private ArrayList<EmergencyContacts> emergencyContacts = new ArrayList<EmergencyContacts>();
-    // private ArrayList<Cabin> totalCabins;
-    // , ArrayList<Cabin> totalCabins <<-missing
-	
-	//new account
-	public User(String userName, String firstName, String lastName, 
-                int age, String phoneNumber) {
-
-		this.id = UUID.randomUUID();
-		this.userName = userName;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.age = age;
-		this.phoneNumber = phoneNumber;
-
-        //is missing:
-         // this.allergies = allergies;
-        // this.emergencyContacts = emergencyContacts;
-        // this.totalCabins = totalCabins;
-	}
-	
+ 	
 	//loaded preexisting user from json
-	public User(UUID id, String userName, String firstName, String lastName, 
-                int age, String phoneNumber) {
+	public User(UUID id, String firstName, String lastName, String userName, int age, String phoneNumber) {
 		this.id = id;
 		this.userName = userName;
 		this.firstName = firstName;

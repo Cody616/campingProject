@@ -1,36 +1,60 @@
 import java.util.ArrayList;
 
 public class EmergencyContacts {
-    // private static EmergencyContacts people = null;
-	// private static ArrayList<EmergencyContacts> personList = new ArrayList<>();
+    public String firstName;
+    public String lastName;
+    public String phoneNumber;
+    public String email;
+    
+    
+        public EmergencyContacts(String firstName, String lastName, int age, String phoneNumber, String email)
+        {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.phoneNumber = phoneNumber;
+            this.email = email;
+        } 
 
-    private String firstName;
-	private String lastName;
-	private String phoneNumber;
-    private int age;
-    private String email;
+        public void setFName(String firstName) {
+            this.firstName=firstName;
+        }
 
-    /*
-     * contains: 
-     * 
-     * EmergencyContact(String firstName, String lastName, int age, string phoneNumber, String email)
-     * 
-     * 
-     * 
-     * need the object to return an array list of emergencyContacts objects.
-     * 
-     * 
-     * copy her one example named people. wanna return an arraylist of emergency contact objects, either of size 1 or 10?? idk
-     * 
-     */
+        public void setLName(String lastName) {
+            this.lastName=lastName;
+        }
 
-    public EmergencyContacts(String firstName, String lastName, int age, String phoneNumber, String email)
-    {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.phoneNumber = phoneNumber;
-        this.age = age;
-        this.email = email;
-	}
+        public void setPhoneNum(String phoneNumber){
+            this.phoneNumber = phoneNumber;
+
+        }
+
+        public void setEmail(String email) {
+            this.email=email;
+        }
+        
+        public String getFname() {
+            return this.firstName;
+        }
+
+        public String getLName() {
+            return this.lastName;
+        }
+
+        public String getPhonenum(){
+            return this.phoneNumber;
+        }
+
+        public String getEmail() {
+            return this.email;
+        }
+
+        public String toString() {
+            String print = "First Name: " + this.firstName +
+            "\nLast Name: " + this.lastName+ "\nPhone Number: " +
+            this.phoneNumber + "\nEmail: " + this.email;
+
+            return print;
+        }
 
 }
+
