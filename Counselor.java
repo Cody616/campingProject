@@ -1,56 +1,124 @@
 import java.util.ArrayList;
 import java.util.UUID;
 
-
 public class Counselor extends User{
-    private ArrayList<EmergencyContacts> emergencyContacts = new ArrayList<EmergencyContacts>();
-    private ArrayList<Cabin> cabins;
+
     private ArrayList<String> allergies = new ArrayList<String>();
-   // private Medical medical;
+    private ArrayList<EmergencyContact> emergencyContacts = new ArrayList<EmergencyContact>();
+    private EmergencyContact pediatrician;
 
-    public Counselor(UUID id, String firstName, String lastName, String userName, int age, String phoneNumber) {
-        super(id, firstName, lastName, userName, age, phoneNumber);
-        emergencyContacts = new ArrayList<>();
-        cabins = new ArrayList<>();
-        allergies = new ArrayList<>();
+    //pre existing counselor
+    public Counselor(UUID id, String username, String password, 
+                String firstName, String lastName, String birthdate,
+                int age, Gender gender, String homeAddress, String phoneNumber, String email,
+                ArrayList<String> allergies, ArrayList<EmergencyContact> emergencyContacts, EmergencyContact pediatrician) 
+    {
 
+       super(id, username, password, firstName, lastName, birthdate, age, gender, homeAddress, phoneNumber, email);
+     
+       this.allergies = allergies;
+       this.emergencyContacts = emergencyContacts;
+       this.pediatrician = pediatrician;
 
     }
 
-    public void setEmergencyContacts(ArrayList<EmergencyContacts> emergencyContacts) {
-        this.emergencyContacts=emergencyContacts;
+    //new Counselor
+    public Counselor(String username, String password, 
+                String firstName, String lastName, String birthdate,
+                int age, Gender gender, String homeAddress, String phoneNumber, String email,
+                ArrayList<String> allergies, ArrayList<EmergencyContact> emergencyContacts, EmergencyContact pediatrician) 
+    {
+
+       super(username, password, firstName, lastName, birthdate, age, gender, homeAddress, phoneNumber, email);
+     
+       this.allergies = allergies;
+       this.emergencyContacts = emergencyContacts;
+       this.pediatrician = pediatrician;
+
     }
 
+    ////GETTERS AND SETTERS
+    public UUID getUUID() {
+        return id;
+    }
+    
+    public ArrayList<String> getAllergies() {
+        return allergies;
+    }
     public void setAllergies(ArrayList<String> allergies) {
         this.allergies = allergies;
     }
 
-
-    
-    public void setCabins(ArrayList<Cabin> cabins) {
-        this.cabins = cabins;
+    public ArrayList<EmergencyContact> getEmergencyContacts() {
+        return emergencyContacts;
+    }
+    public void setEmergencyContacts(ArrayList<EmergencyContact> emergencyContacts) {
+        this.emergencyContacts = emergencyContacts;
     }
 
-    
-   
-    public ArrayList<Cabin> getCabins() {
-        return this.cabins;
+    public EmergencyContact getPediatrician() {
+        return pediatrician;
+    }
+    public void setPediatrician(EmergencyContact pediatrician) {
+    this.pediatrician = pediatrician;
+}
+
+    //COUNSELOR METHODS
+    public String viewCampers(Cabin cabin) 
+    {
+        String temp = new String();
+        for (int i = 0; i < cabin.getCamperList().size(); i++) {
+            temp = temp + "\n" + cabin.getCamperList().get(i).getFirstName() + " "
+                    + cabin.getCamperList().get(i).getLastName();
+        }
+        return temp;
     }
 
-  
-    public ArrayList<String> getAllergies() {
-        return this.allergies;
-    }
+    public String viewWeekSchedule(Camp camp, int weekNumber) {
 
-    public ArrayList<EmergencyContacts> getEmergencyContacts() {
-        return this.emergencyContacts;
+        for (Cabin c : camp.getCampSessions().get(weekNumber).getCabins()) 
+        {
+            if (c.getCounselor().getFirstName().equals(firstName) 
+            && c.getCounselor().getLastName().equals(lastName)) {
+                return c.printWeekSchedule();
+            }
+        }
+        return "You are not apart of a group";
     }
-
 
     public String toString() {
-        String print = super.toString()+"Cabins: " + this.cabins + "\nAllergies: "+
-        this.allergies+ "\nEmergency Contacts: "+ this.emergencyContacts;
+        String temp = new String();
+        temp = "\nCounselor:  " + firstName + " " + lastName 
+                + "\nUsername: " + username
+                + "\nDate of Birth: " + birthdate
+                + "\nAddress: " + homeAddress + "\nEmail: " + email
+                + "\nPhone Number: " + phoneNumber + "\nEmergency Contacts: \n" + printEmergencyContacts()
+                + "\nPediatrician: \n" + pediatrician + "\n";
+        return temp;
 
-        return print;
+        //^^originally had Date of Birth: + formatDate(birthdate)
     }
+
+    //EXTRA METHODS
+    private String printEmergencyContacts() {
+        String temp = new String();
+        for (EmergencyContact c : emergencyContacts) {
+            temp = temp + c.toString() + "\n";
+        }
+        return temp;
+    }
+
+    public void selectSession(Camp camp, int sessionNumber) 
+    {
+        //fetches the session based off the inputted camp and sessionNumber
+        //gets the sessions counselors and then adds the current counselor into the counselor arrayList
+        getSession(camp, sessionNumber).getCounselors().add(this);
+    }
+
+    private Session getSession(Camp camp, int sessionNumber) 
+    {
+        Session session = camp.getCampSession(sessionNumber);
+        return session;
+    }
+   
 }

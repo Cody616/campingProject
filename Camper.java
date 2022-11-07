@@ -1,92 +1,143 @@
-import java.util.UUID;
 import java.util.ArrayList;
+import java.util.UUID;
 
-public class Camper extends User
-{
-    private ArrayList<String> emergencyNotes =  new ArrayList<String>();
+public class Camper extends User{
+    
+    private ArrayList<String> allergies = new ArrayList<String>();
+    private ArrayList<Medication> medications = new ArrayList<Medication>();
     private ArrayList<EmergencyContact> emergencyContacts = new ArrayList<EmergencyContact>();
-    private int foo = 0;
+    private EmergencyContact pediatrician;
 
-    public Camper(String firstName, String lastName, String birthDate, String address, UUID id)
+    public Camper(UUID id, String username, String password, 
+                String firstName, String lastName, String birthdate,
+                int age, Gender gender, String homeAddress, String phoneNumber, String email,
+                ArrayList<String> allergies, ArrayList<Medication> medications, 
+                ArrayList<EmergencyContact> emergencyContacts, EmergencyContact pediatrician) 
     {
-        super(firstName, lastName, birthDate, address, id);
-        this.authBehavior = new PriorityBehavior(username, password, phone, email);
-        
+
+       super(id, username, password, firstName, lastName, birthdate, age, gender, homeAddress, phoneNumber, email);
+     
+       this.allergies = allergies;
+       this.medications = medications;
+       this.emergencyContacts = emergencyContacts;
+       this.pediatrician = pediatrician;
+
     }
 
-    public Camper(String firstName, String lastName, String birthDate, String address,ArrayList<String> medNotes, ArrayList<EmergencyContact> ems) {
-        super(firstName, lastName, birthDate, address,UUID.randomUUID());
-        this.authBehavior = new NoPriorityBehavior();
-        this.medicalNotes = medNotes;
-        this.emergencyContacts = ems;
+    public Camper(String username, String password, 
+                String firstName, String lastName, String birthdate,
+                int age, Gender gender, String homeAddress, String phoneNumber, String email,
+                ArrayList<String> allergies, ArrayList<Medication> medications, 
+                ArrayList<EmergencyContact> emergencyContacts, EmergencyContact pediatrician) 
+    {
+
+       super(username, password, firstName, lastName, birthdate, age, gender, homeAddress, phoneNumber, email);
+
+       this.allergies = allergies;
+       this.medications = medications;
+       this.emergencyContacts = emergencyContacts;
+       this.pediatrician = pediatrician;
+
     }
 
-    public Camper(String firstName, String lastName, String birthDate, String address, UUID id, boolean isCoordinator,ArrayList<EmergencyContact> emergencyContacts, ArrayList<String> medNotes){
-        super(firstName, lastName, birthDate, address,id);
-        this.isCoordinator = isCoordinator;
-        this.medicalNotes = medNotes;
+////GETTERS AND SETTERS
+    public UUID getUUID() {
+        return id;
+    }
+    
+    public ArrayList<Medication> getMedications() {
+        return medications;
+    }
+    public void setMedications(ArrayList<Medication> medications) {
+        this.medications = medications;
+    }
+
+    public ArrayList<String> getAllergies() {
+        return allergies;
+    }
+    public void setAllergies(ArrayList<String> allergies) {
+        this.allergies = allergies;
+    }
+
+    public ArrayList<EmergencyContact> getEmergencyContacts() {
+        return emergencyContacts;
+    }
+    public void setEmergencyContacts(ArrayList<EmergencyContact> emergencyContacts) {
         this.emergencyContacts = emergencyContacts;
-        this.authBehavior = new NoPriorityBehavior();
     }
 
-    public Camper(String firstName, String lastName, String birthDate, String address, UUID id, boolean isCoordinator,ArrayList<EmergencyContact> emergencyContacts, ArrayList<String> medNotes,AuthBehavior auth){
-        super(firstName, lastName, birthDate, address,id);
-        this.isCoordinator = isCoordinator;
-        this.medicalNotes = medNotes;
-        this.emergencyContacts = emergencyContacts;
-        this.authBehavior = auth;
+    public EmergencyContact getPediatrician() {
+        return pediatrician;
     }
+    public void setPediatrician(EmergencyContact pediatrician) {
+    this.pediatrician = pediatrician;
+}
 
-    public Camper(String firstName, String lastName, String birthDate, String address, boolean isCoordinator,ArrayList<EmergencyContact> emergencyContacts, ArrayList<String> medNotes){
-        super(firstName, lastName, birthDate, address,UUID.randomUUID());
-        this.isCoordinator = isCoordinator;
-        this.medicalNotes = medNotes;
-        this.emergencyContacts = emergencyContacts;
-    }
-
-    public ArrayList<String> getMedicalNotes(){
-        return this.medicalNotes;
-    }
-
-    public ArrayList<EmergencyContact> getEmergencyContacts(){
-        return this.emergencyContacts;
-    }
-
-    public void viewEmergencyContacts(){
-        for (User emergencyContact: this.emergencyContacts) {
-            System.out.println(emergencyContact) ;
+///HELPER METHODS
+    private String printAllMedications() {
+        String temp = new String();
+        for (Medication m : medications) {
+            temp = temp + m.toString() + "\n";
         }
+        return temp;
     }
-
-    public boolean getIsCoordinator(){
-        return this.isCoordinator;
-    }
-
-    public String toString(){
-        String div = "------------\n";
-        String out = div;
-        out += (isCoordinator) ? "Coordinator\n":"Camper\n";
-        out += super.toString() + " | Age: " + this.getAgeInt() + "\n";
-        if(this.emergencyContacts != null){
-            out += "Emergency Contacts: \n";
-            for (User user : emergencyContacts) {
-                out += person.toString()+"\n";
-            }
+    private String printEmergencyContacts() {
+        String temp = new String();
+        for (EmergencyContact c : emergencyContacts) {
+            temp = temp + c.toString() + "\n";
         }
-        if(this.medicalNotes != null){
-            out += "Medical Notes:\n";
-            for(String note: medicalNotes){
-                out += note +"\n";
-            }
+        return temp;
+    }
+    private String printAllergies() {
+        String temp = new String();
+        for (String a : allergies) {
+            temp = temp + a.toString() + "\n";
         }
-        out += "Auth Information:\n";
-        out += this.authBehavior.toString() +"\n";
-        out += div;
-        return out;
+        return temp;
     }
 
-    public String getPersonType(){
-        return "Camper";
+    //should be session number??
+    // public boolean selectSession(Camp camp, Integer weekNumber) 
+    // {
+    //     //should access the session through the camp object and then gets the week by the inputted index aka weekNumber
+    //     if(getSession(camp,weekNumber).isFull())
+    //     {
+    //         return false;
+    //     }
+    //     getSession(camp,weekNumber).getCampers().add(this);
+    //     return true;
+    // }
+
+    // private Session getSession(Camp camp, Integer weekNumber) {
+    //     Session session = new Session();
+
+    //     for (HashMap.Entry<Integer, Week> entry : camp.getMasterSchedule().entrySet()) {
+    //         Integer weekInt = entry.getKey();
+    //         Session thisWeek = entry.getValue();
+    //         if (weekNumber - 1 == weekInt) {
+    //             session = thisWeek;
+    //         }
+    //     }
+    //     return session;
+    // }
+
+    public String toString() {
+        return firstName + " " + lastName;
+    }
+    // when director or user wants to see camper information
+    public String toStringFull() {
+
+        String temp = "";
+
+        temp = "\nCamper: " + toString() 
+            + "\nDate of Birth: " + birthdate
+            + "\nAddress: " + homeAddress 
+            + "\nGender: " + super.getGender() 
+            + "\nMedications: \n" + printAllMedications()
+            + "\nAllergies: \n" + printAllergies() 
+            + "\nEmergency Contacts: \n" + printEmergencyContacts() 
+            + "\nPediatrician: \n" + pediatrician.toString() + "\n";
+        return temp;
     }
 
 }

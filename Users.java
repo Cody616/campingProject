@@ -1,12 +1,11 @@
 import java.util.ArrayList;
 
 public class Users {
+
 	private static Users users;
 	private static ArrayList<User> userList;
 
 	//campersList is in usersList????
-
-	
 	
 	/*
 	 * calls for json to give the arraylist of all data and stores it
@@ -57,6 +56,7 @@ public class Users {
 
 	//loops through user array list, takes in the correct username, and then returns true or false if found
 	public boolean haveUser(String userName) {
+        
 		System.out.println();
 		System.out.println("inside USERS object's HAVEUSER method.");
 		// System.out.println("Checks if there is a user or not");
@@ -92,6 +92,7 @@ public class Users {
 		for(User user : userList) {
 			System.out.println("INSIDE FORLOOP");
 			System.out.println("if User in the arraylist is found:");
+
 			if(user.getUserName().equals(userName)) {
 				System.out.println("User found");
 				System.out.println(user.toString());
