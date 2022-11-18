@@ -121,17 +121,23 @@ public class Camper extends User{
     //     return session;
     // }
 
+
+    
+    /*
+     * prints the first and last name as a string
+     */
     public String toString() {
         return firstName + " " + lastName;
     }
-    // when director or user wants to see camper information
+
+    // when director or user wants to see all of the camper's information
     public String toStringFull() {
 
         String temp = "";
 
         temp = "\nCamper: " + toString() 
-            + "\nDate of Birth: " + birthdate
-            + "\nAddress: " + homeAddress 
+            + "\nDate of Birth: " + super.getBirthdate()
+            + "\nAddress: " + super.getHomeAddress()
             + "\nGender: " + super.getGender() 
             + "\nMedications: \n" + printAllMedications()
             + "\nAllergies: \n" + printAllergies() 

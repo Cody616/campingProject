@@ -37,6 +37,11 @@ public class Counselor extends User{
 
     }
 
+    // public Counselor() {
+
+    // }
+    //^^need to make singleton of counselor
+
     ////GETTERS AND SETTERS
     public UUID getUUID() {
         return id;

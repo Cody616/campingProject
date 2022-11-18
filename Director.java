@@ -1,46 +1,58 @@
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class Director extends User{
 
-public Director(String firstName, String lastName, String phoneNumber
-, int age, ArrayList<String> allergies, Gender gender
-, ArrayList<EmergencyContacts> emergencyContacts
- , ArrayList<Cabin> totalCabins)
-{
-     super(firstName, lastName, phoneNumber, age, allergies, gender, emergencyContacts, totalCabins);
+    private ArrayList<Camp> camps = new ArrayList<Camp>();
+
+    //loads new director
+    public Director(String username, String password, String firstName, String lastName, 
+    String birthdate, int age, Gender gender, String homeAddress, String phoneNumber, String email, ArrayList<Camp> camps) 
+    {
+        super(username, password, firstName, lastName, birthdate, age, gender, homeAddress, phoneNumber, email);
+        this.camps = camps;
+    }
+
+    //loads preexisting Director
+    public Director(UUID id, String username, String password, String firstName, String lastName, 
+                    String birthdate, int age, Gender gender, String homeAddress, String phoneNumber, String email, ArrayList<Camp> camps) 
+    {
+        super(id, username, password, firstName, lastName, birthdate, age, gender, homeAddress, phoneNumber, email);
+        this.camps = camps;
+    }
+    
+    //GETTERS AND SETTERS
+    public ArrayList<Camp> getCamps() {
+        return camps;
+    }
+    public void setCamps(ArrayList<Camp> camps) {
+        this.camps = camps;
+    }
+
+    //SPECIAL METHODS
+    public void addCamp(Camp camp) {
+        this.camps.add(camp);
+    }
+
+    public String toString() {
+        
+        String temp = "";
+
+        temp = "\nDirector: " + firstName + " " + lastName + 
+            "\nUsername: "+ username + 
+            "\nDate of Birth: " + birthdate + 
+            "\nAddress: " + homeAddress + "\n";
+
+        return temp;
+    }
+
+    //SCHEDULE METHODS
+    public String getCabinSchedule(int campNumber, Integer weekNumber, int groupNumber) {
+        return camps.get(campNumber).getCampSessions().get(weekNumber).getCabins().get(groupNumber).printWeekSchedule();
+     }
+  
+    public String getWeekSchedule(int campNumber, Integer weekNumber) {
+        return camps.get(campNumber).getCampSessions().get(weekNumber).viewAllCabinSchedules();
+     }
+
 }
-
-
-
-
-/*
- * director should have access to all cabins
- * 
- * cabin should be the reference point for every user
- * , except for the director, which has access to all cabins
- */
-
-
-
-    // private addCounselor()
-    // {
-    //     return"";
-    // }
-    // private removeCounselor()
-    // {
-    //     return "";
-    // }
-    // private addCamper()
-    // {
-    //        return "";
-    // }
-    // private removeCamper()
-    // {
-    //     return "";
-    // }
-    //^^all of these would mess with the total cabin arraylist
-    //should the cabin object have these methods within it?? private methods??
-
-}
-
-

@@ -45,10 +45,10 @@ public class Cabin {
     }
 
 //GETTERS AND SETTERS
-    public UUID getId() {
+    public UUID getUUID() {
         return id;
     }
-    public void setId(UUID id) {
+    public void setUUID(UUID id) {
         this.id = id;
     }
 
@@ -127,7 +127,7 @@ public class Cabin {
         return wholeSchedule;
     }
     
-    //GETS INDIVIDUAL DAYS SCHEDULE
+//GETS INDIVIDUAL DAYS SCHEDULE
     public static String getMondaySchedule(String[] weekSchedule)
     {
         return weekSchedule[0].toString();

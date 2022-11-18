@@ -1,0 +1,74 @@
+//
+/*
+ * Testing by Cody Tang
+ */
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.UUID;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+class DataLoaderTest
+{
+    private UserList userlist = userList.getInstance();
+    private ArrayList<Users> users= userlist.getUsers();
+    
+    private CamperList camperlist = CamperList.getInstance();
+    private ArrayList<Camper> campers = camperlist.getCampers();
+    
+    private CounselorList counselorlist = CounselorList.getInstance();
+    private ArrayList<Counselor> counselors = counselorlist.getCounselors();
+
+    private DirectorList directorlist = DirectorList.getInstance();
+    private ArrayList<Director> directors = directorlist.getDirectors();
+
+    void testGetCamperFirst()
+    {
+        campers = DataLoader.loadCampers();
+        assertEquals("cody", campers.get(0).getFirstName());
+    }
+
+    //3rd box
+    void testGetCamperFirstNull()
+    {
+        campers = DataLoader.loadCampers();
+        campers.setFirstName(null);
+        assertEquals(null,campers.getFirstName());
+    }
+    
+    void testCounselorPassword()
+    {
+        counselors = DataLoader.loadCounselors();
+        assertEquals("csce247", counselors.getPassword());
+    }
+
+    //4th box
+    void testCounselorPasswordNull()
+    {
+        counselors = DataLoader.loadCounselors();
+        assertEquals(null, counselors.getPassword());
+    }
+
+    void testCounselorPhone()
+    {
+        counselors = DataLoader.loadCounselors();
+        assertEquals("21", counselors.getPhone());
+    }
+
+    //5th box
+    void testGetCounselors()
+    {
+        counselors = DataLoader.loadCounselors();
+        users = DataLoader.loadUsers();
+        assertEquals(counselors.toString(), users.getCounselors());
+    }
+    
+}   

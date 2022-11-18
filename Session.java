@@ -1,12 +1,11 @@
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.UUID;
 
 import java.util.Scanner;
 
-public class Session {
+public class Session extends Camp{
 
     //this is all done when creating a camp object, which will pass down the values to the session/ sessionList class
     //asks user to input length of sessions
@@ -22,11 +21,12 @@ public class Session {
     private String description;
     private String startDate;
     private String endDate;
-    private int cabinAmount;
+    private int cabinAmt;
 
     private ArrayList<Cabin> cabins = new ArrayList<Cabin>();
     private ArrayList<Counselor> counselors = new ArrayList<Counselor>();
     private ArrayList<Camper> campers = new ArrayList<Camper>();
+
     private ArrayList<Activity> sessionActivities = new ArrayList<Activity>();
     private String[] weekSchedule = new String[7]; 
    
@@ -38,7 +38,7 @@ public class Session {
     //this array would only hold the toString from the schedule array.
 
     //new session
-    public Session(int sessionNum, String theme, String description, String startDate, String endDate, int cabinAmount, ArrayList<Activity> sessionActivities, ArrayList<Cabin> cabins)
+    public Session(int sessionNum, String theme, String description, String startDate, String endDate, int cabinAmt, ArrayList<Activity> sessionActivities, ArrayList<Cabin> cabins)
     {
         /*
          * prob wont need ArrayList<String> activities maybe possibly
@@ -48,7 +48,7 @@ public class Session {
         this.description = description;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.cabinAmount = cabinAmount;
+        this.cabinAmt = cabinAmt;
         
         this.sessionActivities = sessionActivities;
         this.cabins = cabins;
@@ -113,11 +113,11 @@ public class Session {
 
     public int getCabinAmount() 
     {
-        return cabinAmount;
+        return cabinAmt;
     }
 
-    public void setCabinAmount(int cabinAmount) {
-        this.cabinAmount = cabinAmount;
+    public void setCabinAmount(int cabinAmt) {
+        this.cabinAmt = cabinAmt;
     }
 
 //////USER GROUPS GETTERS AND SETTERS
@@ -181,44 +181,57 @@ public class Session {
         return false;
     }
 
-    public void generateSchedules(ArrayList<Activity> activities) 
+    public void generateCabins(ArrayList<Cabin> cabins, int minAge, int maxAge)
     {
-        //firstly generates cabins
-        //loops through and creates the amount of cabins the user entered. cabins and adds them to the cabin arrayList
-        for (int i = 0; i < cabinAmount; i++) {
-            // UUID uuid = UUID.randomUUID();
-            // groups.add(new Group(uuid));
-           
+        for (int i = 0; i < cabinAmt; i++) {
+
             /*
              * !!!!!!!!!!!!!!!!!!!!!! CABIN ASSIGNMENT STILL NEEDS TO BE DONE!!!!
              */
 
+            cabins.add(new Cabin(UUID.randomUUID()));
+
             System.out.println("Please enter the Minimum age of Cabin #: " + (i+1));
+            cabins.get(i).setAgeMin(minAge);
 
             System.out.println("Please enter the Maximum age of Cabin #: " + (i+1));
+            cabins.get(i).setAgeMax(maxAge);
 
+            //other cabin stuff
+        }
+    }
+
+
+    //generates schedules from inputted ArrayList of activity and then assigns them to the cabins
+    public void generateSchedules(ArrayList<Activity> activities) 
+    {
+        //firstly generates cabins
+        //loops through and creates the amount of cabins the user entered. cabins and adds them to the cabin arrayList
+
+        //loops through the inputted cabin amount and assigns each cabin a uuid
+
+        //then asks the user for the minimum and maximum age???
+        for (int i = 0; i < cabinAmt; i++) 
+        {
 
             cabins.add(new Cabin(UUID.randomUUID()));
+
+            // System.out.println("Please enter the Minimum age of Cabin #: " + (i+1));
+            // cabins.get(i).setAgeMin(i);
+
+            // System.out.println("Please enter the Maximum age of Cabin #: " + (i+1));
+            // cabins.get(i).setAgeMax(i);
+
+            //other cabin stuff....
         }
+        //^^maybe ask for the cabin amt first, then pass it thru the method
 
         Random rand = new Random();
-        //creates a temp activity 
-        // ArrayList<Activity> tempActivities = new ArrayList<Activity>(activities.size());
 
-        //maybe it shuffles the temporary activityArray list and then compares the first value of each??
-
-        //how to make camp schedules not repeat????
-        //im giving up tbh lmaooo
-
-        //loops through the cabin's size
-        for (int c = 0; c < cabins.size(); c++) {
-
-            //creates new schedule object that stores activities along with day of the week
-
-            // HashMap<DayOfWeek, ArrayList<Activity>> schedule = new HashMap<DayOfWeek, ArrayList<Activity>>();
-
+        //loops through the cabin's size and assigns the week schedule to each cabin
+        for (int c = 0; c < cabins.size(); c++) 
+        {
             //loops through the days of the week
-
             String[] weekSchedule = new String[7];
             for (int d = 0; d < 7; d++) {
 
@@ -241,15 +254,6 @@ public class Session {
                 schedule[6] = "8:00 pm - 9:00 pm: ";
                 schedule[7] = "10:00 pm: Bed.";//8
 
-                // loops through the inputted activity arrayList 
-                // and assigns them to the temporary arraylist
-
-                // for (int i = 0; i < activities.size(); i++) {
-                //     tempActivities.add(activities.get(i));
-                // }
-
-                // int assignmentIndex = 0;
-
                 //assigns the schedule array
                 for (int i = 0; i < 8; i++) 
                 {
@@ -271,23 +275,19 @@ public class Session {
 
                 }
 
-                //lastly would loop week schedule array and assign whole schedule to one string.
-                // weekSchedule[d] = 
-
-                // System.out.println("SCHEDULE HAS BEEN CREATED.");
-
+                // assigns whole schedule to one string based off day
                 String temp = "";
-                //if monday
+                //if Monday
                 if(d == 0)
                 {
                     temp = convertScheduleArrayToString(schedule, "Monday");
                 }
-                //if tuesday
+                //if Tuesday
                 if(d == 1)
                 {
                     temp = convertScheduleArrayToString(schedule, "Tuesday");
                 }
-                //if wednesday
+                //if Wednesday
                 if(d == 2)
                 {
                     temp = convertScheduleArrayToString(schedule, "Wednesday");
@@ -302,12 +302,12 @@ public class Session {
                 {
                     temp = convertScheduleArrayToString(schedule, "Friday");
                 }
-                //if saturday
+                //if Saturday
                 if(d == 5)
                 {
                     temp = convertScheduleArrayToString(schedule, "Saturday");
                 }
-                //if sunday
+                //if Sunday
                 if(d == 6)
                 {
                     temp = convertScheduleArrayToString(schedule, "Sunday");
@@ -316,7 +316,7 @@ public class Session {
                 //assigns individual schedule to weekSchedule array.
                 weekSchedule[d] = temp + "\n";
                 // System.out.println("week schedule day#: " + d);
-                System.out.println(weekSchedule[d]);
+                //System.out.println(weekSchedule[d]);
             }
 
             //assigns cabin number to cabin
@@ -344,7 +344,8 @@ public class Session {
         return temp;
     }
 
-    public String viewAllCabinSchedules() {
+    public String viewAllCabinSchedules() 
+    {
         String temp = "";
         //loops through all cabins
         for (Cabin c : cabins) {
@@ -391,6 +392,8 @@ public class Session {
     public void setWeekSchedule(String[] weekSchedule) {
         this.weekSchedule = weekSchedule;
     }
+
+
 
 
 /////////////////////////FRONT END/////////////////////////
@@ -532,60 +535,6 @@ public static void main(String[] args)
     //assigns the schedules to the cabins
     session.generateSchedules(inputtedActivities);
 }
-
-
-
-
-
-
-
-    /*
-     * FRONT END TEST.
-     * 
-     * 
-     */
-    // public static void main(String[] args)
-    // {
-          // Scanner keyboard = new Scanner(System.in);
-
-    //  System.out.println();
-    //  System.out.println("Creating new session.");
-    //  Session session = null;
-
-    //  System.out.println("Please enter the Theme of the session.");
-    //      session.setTheme(keyboard.nextLine());
-
-    //  System.out.println("Please enter the Description of the session.");
-    //      session.setDescription(keyboard.nextLine());
-
-    //  System.out.println("Please enter an activity for the session. There should be at least 5 activities entered.");
-     
-     // System.out.println("Please enter the amount of Cabins you would like to make.");
-     // System.out.println("There is a limit to 6 cabins per each session.");
-    //  session.setCabinsSize(keyboard.nextInt());
-
-    //  //needs like if(getCabin is false) or something
-    //  Cabin[] cabinsss = session.getCabins();  
-
-    //  System.out.println("Setting up information for each cabin.");
-
-    //  for(int i = 0; i < cabinsss.length; i++)
-    //  {
-    //      //sets the cabin number associated with the cabin
-    //      cabinsss[i].setCabinNumber(i+1);
-
-    //      System.out.println("Please enter the Minimum age of Cabin #: " + i+1);
-    //      cabinsss[i].setAgeMin(keyboard.nextInt());
-
-    //      System.out.println("Please enter the Maximum age of Cabin #: " + i+1);
-    //      cabinsss[i].setAgeMax(keyboard.nextInt());
-
-    //      cabinsss[i].setCounselorUUID(null);
-    //      // cabinsss[i].set
-         
-    //  }
-    // }
-  
   
 }
 
